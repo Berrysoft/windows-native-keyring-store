@@ -18,7 +18,7 @@ fn main() {
     if retrieved != password {
         panic!("Passwords do not match");
     }
-    println!("Entry with no target: {:?}", entry);
+    println!("Entry with no target: {entry:?}");
     entry.delete_credential().unwrap();
     let modifiers = HashMap::from([("target", "custom.target")]);
     let entry = Entry::new_with_modifiers("service", "user", &modifiers).unwrap();
@@ -27,7 +27,7 @@ fn main() {
     if retrieved != password {
         panic!("Passwords do not match");
     }
-    println!("Entry with custom target: {:?}", entry);
+    println!("Entry with custom target: {entry:?}");
     entry.delete_credential().unwrap();
     keyring_core::unset_default_store();
 }

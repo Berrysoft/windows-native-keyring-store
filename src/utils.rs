@@ -205,10 +205,10 @@ pub fn enumerate_credentials(
     let mut result = Vec::new();
     for cred in slice {
         let mut candidate = cred_from_credential(&mut unsafe { **cred });
-        if let Some(pat) = &pattern {
-            if !pat.is_match(&candidate.target_name) {
-                continue;
-            }
+        if let Some(pat) = &pattern
+            && !pat.is_match(&candidate.target_name)
+        {
+            continue;
         }
         if let Some(captures) = spec_pat.captures(&candidate.target_name) {
             // user comes first, service second in the target name. Specifiers are the other way.
