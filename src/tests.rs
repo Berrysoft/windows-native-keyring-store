@@ -299,7 +299,7 @@ fn test_simultaneous_create_then_move() {
     let mut handles = vec![];
     let base = generate_random_string();
     for i in 0..10 {
-        let name = format!("{}-{}", base, i);
+        let name = format!("{base}-{i}");
         let entry = entry_new(&name, &name);
         let test = move || {
             entry.set_password(&name).unwrap();
@@ -337,7 +337,7 @@ fn test_simultaneous_create_set_then_move() {
     let mut handles = vec![];
     let base = generate_random_string();
     for i in 0..10 {
-        let name = format!("{}-{}", base, i);
+        let name = format!("{base}-{i}");
         let entry = entry_new(&name, &name);
         entry.set_password(&name).unwrap();
         let test = move || {
